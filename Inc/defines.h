@@ -235,11 +235,16 @@ typedef struct {
   uint16_t l_rx2;
 } adc_buf_t;
 
+typedef enum {
+  NUNCHUK_CONNECTING,
+  NUNCHUK_DISCONNECTED,
+  NUNCHUK_RECONNECTING,
+  NUNCHUK_CONNECTED
+} nunchuk_state;
+
 // Define I2C, Nunchuk, PPM, PWM functions
 void I2C_Init(void);
-void Nunchuk_Init(void);
 void Nunchuk_Read(void);
-uint8_t Nunchuk_Ping(void);
 void PPM_Init(void);
 void PPM_ISR_Callback(void);
 void PWM_Init(void);
@@ -256,12 +261,11 @@ void PWM_ISR_CH2_Callback(void);
 #define SENSOR2_SET         (0x02)
 #define SENSOR_MPU          (0x04)
 
-// RC iBUS switch definitions. Flysky FS-i6S has [SW1, SW2, SW3, SW4] = [2, 3, 3, 2] positions switch
-#define SW1_SET             (0x0100)   //  0000 0001 0000 0000
-#define SW2_SET             (0x0600)   //  0000 0110 0000 0000
-#define SW3_SET             (0x1800)   //  0001 1000 0000 0000
-#define SW4_SET             (0x2000)   //  0010 0000 0000 0000
-
+// RC iBUS switch definitions. Flysky FS-i6S has [SWA, SWB, SWC, SWD] = [2, 3, 3, 2] positions switch
+#define SWA_SET             (0x0100)   //  0000 0001 0000 0000
+#define SWB_SET             (0x0600)   //  0000 0110 0000 0000
+#define SWC_SET             (0x1800)   //  0001 1000 0000 0000
+#define SWD_SET             (0x2000)   //  0010 0000 0000 0000
 
 #endif // DEFINES_H
 

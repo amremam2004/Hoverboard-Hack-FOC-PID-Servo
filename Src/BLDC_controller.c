@@ -1019,6 +1019,8 @@ void BLDC_controller_step(RT_MODEL *const rtM)
   int32_T rtb_Sum1_jt;
   int16_T rtb_Merge_m;
   int16_T rtb_Merge1;
+  uint16_T rtb_Divide14_e;
+  uint16_T rtb_Divide1_f;
   int16_T rtb_TmpSignalConversionAtLow_Pa[2];
   int32_T rtb_Switch1;
   int32_T rtb_Sum1;

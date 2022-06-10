@@ -6,6 +6,8 @@
 #include "setup.h"
 #include "config.h"
 
+#define NUNCHUK_I2C_ADDRESS 0xA4
+
 TIM_HandleTypeDef TimHandle;
 TIM_HandleTypeDef TimHandle2;
 uint8_t  ppm_count = 0;
@@ -15,6 +17,7 @@ uint8_t  timeoutFlgGen = 0;
 uint8_t  nunchuk_data[6] = {0};
 
 uint8_t i2cBuffer[2];
+nunchuk_state nunchukState = NUNCHUK_CONNECTING;
 
 extern I2C_HandleTypeDef hi2c2;
 extern DMA_HandleTypeDef hdma_i2c2_rx;

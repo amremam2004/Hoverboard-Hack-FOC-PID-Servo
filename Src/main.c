@@ -214,8 +214,13 @@ int main(void) {
   HAL_ADC_Start(&hadc2);
 
   poweronMelody();
+  HAL_Delay(1000);
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
-
+  HAL_Delay(1000);
+  HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_RESET);
+  HAL_Delay(1000);
+  HAL_GPIO_WritePin(LED_PORT, LED_PIN, GPIO_PIN_SET);
+  poweronMelody();
   int16_t cmdL      = 0, cmdR      = 0;
   int16_t cmdL_prev = 0, cmdR_prev = 0;
 
