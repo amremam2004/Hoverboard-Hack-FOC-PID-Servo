@@ -638,9 +638,11 @@ void MX_ADC1_Init(void) {
   sConfig.Rank    = 3;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 
-  
-	//sConfig.Channel = ADC_CHANNEL_12;  // pc2 vbat
-	sConfig.Channel = ADC_CHANNEL_1;  // pc2 vbat  was channel 12 cds
+  #if BOARD_VARIANT == 0
+  sConfig.Channel = ADC_CHANNEL_12;  // pc2 vbat
+  #elif BOARD_VARIANT == 1
+  sConfig.Channel = ADC_CHANNEL_1;   // pa1 vbat
+  #endif
   sConfig.Rank    = 4;
   HAL_ADC_ConfigChannel(&hadc1, &sConfig);
 

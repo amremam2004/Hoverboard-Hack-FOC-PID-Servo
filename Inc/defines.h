@@ -102,13 +102,14 @@
 
 // #define DCLINK_ADC ADC3
 // #define DCLINK_CHANNEL
-//#define DCLINK_PIN GPIO_PIN_2    //this i changed pin 1
-//#define DCLINK_PORT GPIOC        //this is changed to A
 
-#define DCLINK_PIN GPIO_PIN_1    //v_batt_meas   was on C2
+#if BOARD_VARIANT == 0
+#define DCLINK_PIN GPIO_PIN_2
+#define DCLINK_PORT GPIOC
+#elif BOARD_VARIANT == 1
+#define DCLINK_PIN GPIO_PIN_1
 #define DCLINK_PORT GPIOA
-
-
+#endif
 
 // #define DCLINK_PULLUP 30000
 // #define DCLINK_PULLDOWN 1000
@@ -116,35 +117,47 @@
 #define LED_PIN GPIO_PIN_2
 #define LED_PORT GPIOB
 
-//#define BUZZER_PIN GPIO_PIN_4
-//#define BUZZER_PORT GPIOA
-
-#define BUZZER_PIN GPIO_PIN_13  //was A4
+#if BOARD_VARIANT == 0
+#define BUZZER_PIN GPIO_PIN_4
+#define BUZZER_PORT GPIOA
+#elif BOARD_VARIANT == 1
+#define BUZZER_PIN GPIO_PIN_13
 #define BUZZER_PORT GPIOC
+#endif
 
-
+// UNUSED/REDUNDANT
+#if BOARD_VARIANT == 0
 //#define SWITCH_PIN GPIO_PIN_1
 //#define SWITCH_PORT GPIOA
-#define SWITCH_PIN GPIO_PIN_9  // was A1 also called AIN_V_BATT
-#define SWITCH_PORT GPIOB
+#elif BOARD_VARIANT == 1
+//#define SWITCH_PIN GPIO_PIN_9  // was A1 also called AIN_V_BATT
+//#define SWITCH_PORT GPIOB
+#endif
 
-//#define OFF_PIN GPIO_PIN_5
-//#define OFF_PORT GPIOA
-#define OFF_PIN GPIO_PIN_15   //was A5 aksi called SUPPLY_EN_MCU on diagram
+
+#if BOARD_VARIANT == 0
+#define OFF_PIN GPIO_PIN_5
+#define OFF_PORT GPIOA
+#elif BOARD_VARIANT == 1
+#define OFF_PIN GPIO_PIN_15
 #define OFF_PORT GPIOC
+#endif
 
-//#define BUTTON_PIN GPIO_PIN_1
-//#define BUTTON_PORT GPIOA
-#define BUTTON_PIN GPIO_PIN_9  // thiss is the same as the switch pin now
+#if BOARD_VARIANT == 0
+#define BUTTON_PIN GPIO_PIN_1
+#define BUTTON_PORT GPIOA
+#elif BOARD_VARIANT == 1
+#define BUTTON_PIN GPIO_PIN_9
 #define BUTTON_PORT GPIOB
+#endif
 
-//#define CHARGER_PIN GPIO_PIN_12
-//#define CHARGER_PORT GPIOA
-//CHARGER PIN IS SET TO PULLUP LATER IN THIS FILE
-#define CHARGER_PIN GPIO_PIN_11// was pin A12  
+#if BOARD_VARIANT == 0
+#define CHARGER_PIN GPIO_PIN_12
 #define CHARGER_PORT GPIOA
-
-
+#elif BOARD_VARIANT == 1
+#define CHARGER_PIN GPIO_PIN_11
+#define CHARGER_PORT GPIOA
+#endif
 
 #if defined(CONTROL_PPM_LEFT)
 #define PPM_PIN             GPIO_PIN_3
